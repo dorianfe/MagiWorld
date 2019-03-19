@@ -15,6 +15,7 @@ public class Warrior extends Hero {
 
         targetHero.removeHealth(damage*2);
         removeHealth(damage/2);
+        System.out.println("Joueur " + playerNumber);
 
     }
 }

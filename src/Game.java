@@ -8,8 +8,7 @@ public class Game {
 
 
     /**
-     * Game start here
-     * With the creation of both player1 & player2
+     * Starts game
      */
     public Game() {
         player1 = createPlayer(1);
@@ -23,8 +22,7 @@ public class Game {
     // ---- Personnage création ----
 
     /**
-     * Method used for ask the parameter of the actual concerned personnage
-     * Use a scanner for ask the value
+     * Asks Hero's paramaters. Scanner is used.
      */
     private Hero createPlayer(int playerNumber) {
         int heroType, strength, agility, intelligence, level;
@@ -52,30 +50,29 @@ public class Game {
     }
 
     /**
-     * Method used for instanciate the personnage with the good value
+     * Instanciates Hero with the correct values.
      */
     private Hero initHero(int heroType, int strength, int intelligence, int agility, int level, int playerNumber) {
-        Hero temp = null;
+        Hero hero = null;
         switch (heroType) {
             case 1:
-                temp = new Warrior(strength, intelligence, agility, level, playerNumber);
+                hero = new Warrior(strength, intelligence, agility, level, playerNumber);
                 System.out.println("Woarg");
                 break;
             case 2:
-                temp = new Rogue(strength, intelligence, agility, level, playerNumber);
+                hero = new Rogue(strength, intelligence, agility, level, playerNumber);
                 break;
             case 3:
-                temp = new Mage(strength, intelligence, agility, level, playerNumber);
+                hero = new Mage(strength, intelligence, agility, level, playerNumber);
                 break;
         }
-        return temp;
+        return hero;
     }
 
     // ---- Game turn ----
 
     /**
-     * Method for start the fight
-     * We use a modulo for the pair and impair turn
+     * Turn system. Modulo differenciate turn 1 from turn 2.
      */
     private void Start() {
         int turn = 1;
@@ -97,10 +94,10 @@ public class Game {
     }
 
     /**
-     * Method used for a turn of the game
+     * Method used each turn to select which attack will be used
      *
-     * @param attack the personnage who attack
-     * @param defend the personnage who defend
+     * @param attack the attacking hero
+     * @param defend the defending hero
      */
     private void Turn(Hero attack, Hero defend) {
         System.out.println("Joueur " + attack.getPlayerNumber() + " (" + attack.getHealth() + " de vitalité) veuillez choisir " +
